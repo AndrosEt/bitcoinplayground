@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "8"
+before_install:
+  - npm update
+install:
+  - npm install
+script:
+  - npm run build
+  - npm test
+  - cp ./docs/index.html ./docs/404.html
+  - npm test
+  - npm run coveralls
+after_success:
+  - git init
+  - git config --global user.name "${U_NAME}"
+  - git config --global user.email "${U_EMAIL}"
+  - git add -A
+  - git commit -m "Automatically update from travis-ci"
+  - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
