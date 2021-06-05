@@ -76,17 +76,18 @@
     .qr-dialog-box {
       text-align: center;
       background-color: white;
-      border-radius: 4px;
-      width: 320px;
+      border-radius: 30px;
+      width: 260px;
       overflow: auto;
       max-height: 90%;
-      height: fit-content;
-      padding: 16px;
+      height: 260px;
+      padding: 30px;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       display: flex;
+      justify-content: center;
       flex-direction: column;
       align-items: center;
 
@@ -94,13 +95,15 @@
         align-self: flex-end;
         width: 12px;
         height: 12px;
+        top: 31px;
+        position: absolute;
         background: url('../assets/dialog/ic-close.svg') center no-repeat;
         background-size: contain;
         cursor: pointer;
       }
 
       .i-qr-code {
-        margin-top: 12px;
+        /*margin-top: 12px;*/
       }
 
       .tips {
