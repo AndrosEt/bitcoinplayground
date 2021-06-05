@@ -9,7 +9,6 @@ script:
   - npm run build
   - npm test
   - cp ./docs/index.html ./docs/404.html
-  - npm test
   - npm run coveralls
 after_success:
   - git init
