@@ -134,7 +134,7 @@
         ],
         N: '',
         M: '',
-        isPc: this.$isPc()
+        isPc: document.documentElement.clientWidth || document.body.clientWidth > 500
       }
     },
     methods: {
@@ -158,9 +158,9 @@
       copyAddr() {
         this.copyData(this.address)
       },
-      copyData(data) {
+      copyData(dataString) {
         let textarea = document.createElement("textarea");
-        textarea.value = data;
+        textarea.value = dataString;
         textarea.readOnly = true;
         document.body.appendChild(textarea);
         textarea.select();

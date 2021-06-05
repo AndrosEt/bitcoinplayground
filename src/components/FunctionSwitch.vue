@@ -30,7 +30,8 @@
           }
         ],
         isInit: true,
-        isPc: this.$isPc()
+        isPc: document.documentElement.clientWidth || document.body.clientWidth > 500
+
       };
     },
     mounted() {
