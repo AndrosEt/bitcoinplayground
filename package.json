@@ -90,7 +90,9 @@
     },
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/dialog",
-      "<rootDir>/src/components"
+      "<rootDir>/src/components",
+      "<rootDir>/src/App.vue",
+      "<rootDir>/src/main.js"
     ]
   }
 }
