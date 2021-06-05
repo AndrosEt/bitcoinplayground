@@ -30,7 +30,7 @@
           }
         ],
         isInit: true,
-        isPc: document.documentElement.clientWidth || document.body.clientWidth > 500
+        isPc: this.$isPc()
 
       };
     },
