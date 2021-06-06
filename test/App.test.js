@@ -1,21 +1,15 @@
-import Vue from "vue";
 import App from "../src/App";
-import BitcoinjTools from "../src/components/BitcoinjTools";
+import {mount} from "@vue/test-utils";
 
 describe("App.test.js", () => {
-  let cmp, vm;
 
-  beforeEach(() => {
-    cmp = Vue.extend(BitcoinjTools); // Create a copy of the original component
-    vm = new cmp({
-      data: {
-        // Replace data value with this fake data
-        address: 'asfdaewfawef'
-      }
-    }).$mount(); // Instances and mounts the component
-  });
+  const appWrapper = mount(App, {
+    mocks: {
+      $isPc: () => true
+    }
+  })
 
-  it('equals messages to ["Cat"]', () => {
-    expect(vm.address).toEqual('asfdaewfawef');
+  it('equals messages to testaddress', () => {
+    expect(appWrapper.html()).toContain(`<div id="app">`);
   });
 });

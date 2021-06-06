@@ -4,19 +4,15 @@ import { shallowMount } from '@vue/test-utils'
 import {mount} from '@vue/test-utils'
 
 
-
 describe("FunctionSwitch.test.js", () => {
-  let cmp, vm;
-
-  beforeEach(() => {
-    cmp = Vue.extend(FunctionSwitch); // Create a copy of the original component
-    vm = new cmp().$mount(); // Instances and mounts the component
-  });
 
   it('Can switch the function', async () => {
 
-    // wrapper.vm.$mounted()
-    const wrapper = mount(FunctionSwitch)
+    const wrapper = shallowMount(FunctionSwitch, {
+      mocks: {
+        $isPc: () => true
+      }
+    })
 
     expect(wrapper.vm.selectedIndex).toBe(0)
     const function1 = wrapper.findAll('a').at(0)

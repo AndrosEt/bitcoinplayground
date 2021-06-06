@@ -6,7 +6,11 @@ import Vue from 'vue'
 import {shallowMount} from '@vue/test-utils'
 
 // const functionSwitchWrapper = mount(FunctionSwitch)
-const bitcoinjToolsWrapper = mount(BitcoinjTools)
+const bitcoinjToolsWrapper = mount(BitcoinjTools, {
+  mocks: {
+    $isPc: () => true
+  }
+})
 document.execCommand = jest.fn().mockReturnValue(true);
 
 describe("BitcoinjTools.test.js", () => {
@@ -41,19 +45,19 @@ describe("BitcoinjTools.test.js", () => {
     expect(bitcoinjToolsWrapper.vm.$data.address.length > 0).toBe(true)
 
     // // copy test
-    // // bitcoinjToolsWrapper.vm.copyAddr()
+    // bitcoinjToolsWrapper.vm.copyAddr()
     // bitcoinjToolsWrapper.vm.copyMnemonic()
     // const copyHtml=document.body.outerHTML
     // expect(copyHtml).toContain(`<textarea readonly="" class="textarea" style="display: none;"></textarea>`)
 
     // QR code test
-    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container"`)).toBe(false)
+    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container dialog dialog-out" style="display: none;">`)).toBe(true)
     bitcoinjToolsWrapper.vm.displayQR()
     await bitcoinjToolsWrapper.vm.$nextTick()
-    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container"`)).toBe(true)
+    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container dialog" style="">`)).toBe(true)
     bitcoinjToolsWrapper.vm.closeDialog()
     await bitcoinjToolsWrapper.vm.$nextTick()
-    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container"`)).toBe(false)
+    expect(bitcoinjToolsWrapper.html().includes(`<div class="dialog-container dialog" style="">`)).toBe(false)
 
 
   })
