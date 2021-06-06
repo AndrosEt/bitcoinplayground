@@ -2,7 +2,7 @@
   "name": "bitcoinplayground",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "williamatwb <williamxie@whale.blue>",
+  "author": "AndrosEt <1756238821@qq.com>",
   "private": true,
   "scripts": {
     "serve local": "vue-cli-service serve --mode local",

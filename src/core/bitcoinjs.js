@@ -1,7 +1,5 @@
 import * as bitcoinjs from 'bitcoinjs-lib'
 import * as bip39 from 'bip39'
-import Antd from 'ant-design-vue'
-import Vue from 'vue'
 
 
 
@@ -22,7 +20,6 @@ const instance = {
    * @param path
    */
   generateSegWitAddrWithSeedAndPath: function (seed, path, callback) {
-    // Safe check
 
     bip39.mnemonicToSeed(seed).then(bytes => bytes.toString('hex')).then(seed => {
 
