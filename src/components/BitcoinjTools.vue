@@ -66,7 +66,7 @@
         <div class="address-item" v-for="(item,index) in bitcoinAddrs" :key="index">
           <a-textarea
             class="address-input input"
-            placeholder="Please enter the address here."
+            placeholder="Please enter the pubkey here."
             v-model="item.address"
             spellcheck="false"
             :auto-size="{ minRows: 1, maxRows: 6 }"
@@ -185,7 +185,8 @@
               console.log(data)
             })
           }, 500)
-
+        } else {
+          this.$message.info('Please enter the seed or the path.');
         }
       },
       addAddress () {
@@ -200,7 +201,15 @@
         }).filter(item =>
           item.length > 0
         )
-        this.address = bitcoinjs.generateNofMAddress(publicKeys, Number(this.N), Number(this.M))
+        if (publicKeys.length <= 0) {
+          this.$message.info('Please enter the public keys.');
+        } else {
+          if (this.N === '' || this.M === '') {
+            this.$message.info('Please enter the N/M.');
+          } else {
+            this.address = bitcoinjs.generateNofMAddress(publicKeys, Number(this.N), Number(this.M))
+          }
+        }
       }
     }
   }
